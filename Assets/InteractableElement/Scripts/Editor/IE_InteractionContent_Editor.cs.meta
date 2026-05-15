@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 90cfdfa72a302d14b81c020e240d3c1f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - VisualTree: {fileID: 9197481963319205126, guid: fff73039a14e00246995b06125ff9051,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Scripts/Editor/IE_InteractionContent_Editor.cs
+  uploadId: 755784

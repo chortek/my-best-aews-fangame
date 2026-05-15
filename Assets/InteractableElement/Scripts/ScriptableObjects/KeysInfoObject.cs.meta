@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 7ef2024866e7e214e8ff11510dc8d138
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Scripts/ScriptableObjects/KeysInfoObject.cs
+  uploadId: 755784

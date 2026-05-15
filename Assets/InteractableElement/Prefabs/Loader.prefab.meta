@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4dee460d4a0388c4f915f3d4108c64df
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Prefabs/Loader.prefab
+  uploadId: 755784

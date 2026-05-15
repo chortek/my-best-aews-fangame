@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e3e7bd49ffba37944aec0d9813833581
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Prefabs/Key.prefab
+  uploadId: 755784

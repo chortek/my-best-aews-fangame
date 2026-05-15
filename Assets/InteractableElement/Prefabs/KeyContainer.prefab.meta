@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3a7bb391bf679f44985a223b8b98e334
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Prefabs/KeyContainer.prefab
+  uploadId: 755784

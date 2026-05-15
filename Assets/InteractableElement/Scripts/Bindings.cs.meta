@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 00586ed5acecf4a46a9079f8f48adf13
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Scripts/Bindings.cs
+  uploadId: 755784

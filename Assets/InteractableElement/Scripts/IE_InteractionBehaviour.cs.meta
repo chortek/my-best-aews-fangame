@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 6ae48c8d9013cec429e979d75cac59a3
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Scripts/IE_InteractionBehaviour.cs
+  uploadId: 755784

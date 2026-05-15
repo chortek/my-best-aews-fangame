@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: f528751898ec712408b0f6d137c3930c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Scripts/IE_InteractionTextUILayer.cs
+  uploadId: 755784

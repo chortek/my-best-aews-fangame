@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: ff9eaf1ca43c3d44988662f9bf8758a9
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/Scripts/IE_InteractiveCubeHandler.cs
+  uploadId: 755784

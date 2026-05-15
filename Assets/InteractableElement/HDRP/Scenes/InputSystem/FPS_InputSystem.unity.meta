@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: da49d230bcd5ee846b5406e103ca7e55
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316478
+  packageName: InteractableElement
+  packageVersion: 1.0
+  assetPath: Assets/InteractableElement/HDRP/Scenes/InputSystem/FPS_InputSystem.unity
+  uploadId: 755784
