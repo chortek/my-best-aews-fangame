@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 602cdaeca0485984c9bf92c038db44ad
-AssetOrigin:
-  serializedVersion: 1
-  productId: 316478
-  packageName: InteractableElement
-  packageVersion: 1.0
-  assetPath: Assets/InteractableElement/Scripts/IE_FPSInteractionUIContainer.cs
-  uploadId: 755784

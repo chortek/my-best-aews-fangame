@@ -47,49 +47,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.3f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerFallState.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_InteractionTextUILayer.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerJumpingState.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_FPSInteractionUIContainer.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_InteractiveCubeHandler.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\FirstPersonController.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\InputManagerOld.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\InteractionType.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_TPSInteractionTextContainer.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\BoxInteractable.cs" />
-    <Compile Include="Assets\InteractableElement\InputSystem\InteractionInputs.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\PlayerStateFactory.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\SC_FPSController.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_KeyOverrides.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_InteractionFPSController.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerSlidingState.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\DEMO_InteractionDoor.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_Draggable.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerGroundedState.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerLedgeGrabState.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\InteractableUtils.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_InteractionElement.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\PlayerBaseState.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_TPSInteractionController.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerCrouchingState.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\Bindings.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\SC_TPSController.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_InteractionBehaviour.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\IE_KeyContainer.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\AnalogInputInteractionUtils.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\Utils.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\Statics\InputSystem.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\States\PlayerSwimmingState.cs" />
-    <Compile Include="Assets\InteractableElement\Scripts\ScriptableObjects\KeysInfoObject.cs" />
-    <Compile Include="Assets\EasyPeasyFirstPersonController\Scripts\IInputManager.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\EasyPeasyFirstPersonController\Documentation\OnlineDocumentation.txt" />
-    <None Include="Assets\InteractableElement\Scripts\UXML\IE_InteractionTextUILayer_UI.uxml" />
-    <None Include="Assets\InteractableElement\Third-Party Notices.txt" />
-    <None Include="Assets\InteractableElement\Scripts\UXML\KeyOverrides.uxml" />
-    <None Include="Assets\InteractableElement\Scripts\UXML\IE_InteractionElement_UI.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1144,6 +1102,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
@@ -1154,6 +1116,10 @@
     </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
@@ -1186,6 +1152,10 @@
     </Reference>
     <Reference Include="PPv2URPConverters">
       <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
@@ -1244,6 +1214,14 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1252,8 +1230,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Notifications">
+      <HintPath>Library\ScriptAssemblies\Unity.Notifications.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Notifications.Android">
+      <HintPath>Library\ScriptAssemblies\Unity.Notifications.Android.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections">
@@ -1266,6 +1252,10 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
@@ -1308,8 +1298,24 @@
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Notifications.Unified">
+      <HintPath>Library\ScriptAssemblies\Unity.Notifications.Unified.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
@@ -1336,8 +1342,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.AIIntegration.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.AIIntegration.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Notifications.iOS">
+      <HintPath>Library\ScriptAssemblies\Unity.Notifications.iOS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Settings.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

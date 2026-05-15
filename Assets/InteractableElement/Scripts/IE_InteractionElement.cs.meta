@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 6252500a2c4262c47912f804b3947cfa
-AssetOrigin:
-  serializedVersion: 1
-  productId: 316478
-  packageName: InteractableElement
-  packageVersion: 1.0
-  assetPath: Assets/InteractableElement/Scripts/IE_InteractionElement.cs
-  uploadId: 755784
