@@ -82,3 +82,11 @@ The following packages were added:
   com.unity.mobile.android-logcat@1.4.6
   com.unity.mobile.notifications@2.4.2
   com.unity.probuilder@6.0.8
+
+=== Thu May 28 14:12:08 2026
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.inputsystem from version 1.13.1 to 1.17.0
