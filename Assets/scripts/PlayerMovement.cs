@@ -8,17 +8,17 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 1.5f;
     public float gravity = -20f;
 
-    private CharacterController controller;
-    private Vector3 velocity;
-    private float currentSpeed;
+    public CharacterController controller;
+    public Vector3 velocity;
+    public float currentSpeed;
 
-    void Start()
+    public void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    public void Update()
     {
         // проверка на землю через CharacterController
         bool isGrounded = controller.isGrounded;

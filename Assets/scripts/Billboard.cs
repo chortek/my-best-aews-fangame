@@ -21,7 +21,7 @@ public class Billboard : MonoBehaviour
 
             // Переносим угол поворота Z от камеры (или рассчитываем угол на нее)
             // Вариант А: Объект повторяет наклон камеры (для 2D/2.5D игр)
-            currentRotation.z = mainCameraTransform.eulerAngles.z;
+            currentRotation.y = mainCameraTransform.eulerAngles.y;
 
             // Применяем измененный поворот, оставляя X и Y нетронутыми
             transform.localEulerAngles = currentRotation;
