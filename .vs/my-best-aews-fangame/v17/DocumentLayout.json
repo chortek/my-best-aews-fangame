@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\my-best-aews-fangame\\assets\\scripts\\victorytrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\victorytrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\my-best-aews-fangame\\assets\\scripts\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\billboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\billboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\restartbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\restartbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\memorygamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\memorygamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\notebookcounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\notebookcounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\victorytrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\victorytrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\victorymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\scripts\\NotebookSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\billboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\billboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCD5D8B0-0DF0-E337-8BA9-35D8B84DAB40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -86,36 +98,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "VictoryTrigger.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\VictoryTrigger.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\VictoryTrigger.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\VictoryTrigger.cs",
-              "RelativeToolTip": "Assets\\scripts\\VictoryTrigger.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:50:25.368Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ScoreSoundTrigger.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ScoreSoundTrigger.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\ScoreSoundTrigger.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ScoreSoundTrigger.cs",
-              "RelativeToolTip": "Assets\\scripts\\ScoreSoundTrigger.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:36:45.492Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ShuamaSoundOnce.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ShuamaSoundOnce.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\ShuamaSoundOnce.cs",
@@ -127,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "FootstepSounds.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\FootstepSounds.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\FootstepSounds.cs",
@@ -139,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "ButtonSound.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ButtonSound.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\ButtonSound.cs",
@@ -151,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "SceneLoader.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\SceneLoader.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\SceneLoader.cs",
@@ -163,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "Notebook.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Notebook.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\Notebook.cs",
@@ -175,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "RandomNotebooksOnStart.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\RandomNotebooksOnStart.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\RandomNotebooksOnStart.cs",
@@ -188,18 +175,91 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Billboard.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Billboard.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Billboard.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Billboard.cs",
+              "RelativeToolTip": "Assets\\scripts\\Billboard.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T14:21:45.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MemoryGameManager.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\MemoryGameManager.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\MemoryGameManager.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\MemoryGameManager.cs",
               "RelativeToolTip": "Assets\\scripts\\MemoryGameManager.cs",
-              "ViewState": "AQIAAHkAAAAAAAAAAAAcwIsAAAAtAAAA",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAcwK0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T14:55:03.112Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
+              "Title": "NotebookCounter.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\NotebookCounter.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\NotebookCounter.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\NotebookCounter.cs",
+              "RelativeToolTip": "Assets\\scripts\\NotebookCounter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T14:29:11.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Teacher.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Teacher.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Teacher.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Teacher.cs",
+              "RelativeToolTip": "Assets\\scripts\\Teacher.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T14:37:22.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ScoreSoundTrigger.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ScoreSoundTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\ScoreSoundTrigger.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ScoreSoundTrigger.cs",
+              "RelativeToolTip": "Assets\\scripts\\ScoreSoundTrigger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:36:45.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VictoryTrigger.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\VictoryTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\VictoryTrigger.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\VictoryTrigger.cs",
+              "RelativeToolTip": "Assets\\scripts\\VictoryTrigger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:50:25.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RestartButton.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\RestartButton.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\RestartButton.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\RestartButton.cs",
+              "RelativeToolTip": "Assets\\scripts\\RestartButton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T14:40:06.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ExitGame.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\ExitGame.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\ExitGame.cs",
@@ -211,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "VictoryMenu.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\VictoryMenu.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\VictoryMenu.cs",
@@ -223,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "MemoryButton.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\MemoryButton.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\MemoryButton.cs",
@@ -235,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "MemoryGameStarter.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\MemoryGameStarter.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\MemoryGameStarter.cs",
@@ -247,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "NotebookSystem.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\NotebookSystem.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\NotebookSystem.cs",
@@ -258,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "TaskManager.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\TaskManager.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\TaskManager.cs",
@@ -270,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "NotebookActivator.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\NotebookActivator.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\NotebookActivator.cs",
@@ -282,19 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Billboard.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Billboard.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\Billboard.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\Billboard.cs",
-              "RelativeToolTip": "Assets\\scripts\\Billboard.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T14:21:45.083Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "MouseLook.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\MouseLook.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\MouseLook.cs",
@@ -306,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\my-best-aews-fangame\\Assets\\scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\PlayerMovement.cs",

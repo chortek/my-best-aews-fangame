@@ -166,5 +166,11 @@ public class MemoryGameManager : MonoBehaviour
     {
         return score;
     }
+    public void AddScore(int value)
+    {
+        score += value;
+        if (score < 0) score = 0;
+        UpdateScoreUI();
+    }
 
 }
