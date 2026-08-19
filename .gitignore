@@ -1,0 +1,71 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+
+# Asset meta data should only be ignored when the project asset is in the same folder
+*.meta
+
+# Sensitive / user-specific files
+*.user
+*.userprefs
+*.unityproj
+*.booproj
+*.pidb
+*.suo
+*.sln
+*.csproj
+*.vbproj
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Unity3D generated
+*.unitypackage
+
+# Visual Studio / VS Code
+.vs/
+.idea/
+.vscode/
+
+# Rider
+*.sln.iml
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Unity Patches
+*.patch
+
+# Crash reports
+[Cc]rashes/
+
+# Build artifacts
+*.exe
+*.app
+*.dmg
+*.pkg
+
+# Logs
+*.log
+*.log.*
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Unity Addressables
+/AddressableAssetsData/
+.vs/
