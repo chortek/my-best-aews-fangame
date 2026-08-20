@@ -3,34 +3,53 @@ using System.Collections.Generic;
 
 public class Door : MonoBehaviour
 {
-    [Header("Движение")]
+    [Header("Movement")]
     public Vector3 openOffset = new Vector3(2f, 0f, 0f);
     public float speed = 3f;
     public float openDuration = 5f;
 
-    [Header("Зона взаимодействия")]
-    public float triggerRadius = 1.5f;
-    public Color gizmoColor = new Color(0f, 1f, 0f, 0.3f);
-
-    [Header("Звук")]
-    public AudioClip openSound;
-
-    [Header("Условия")]
+    [Header("Requirements")]
     public List<DoorRequirement> requirements;
+
+    [Header("Audio")]
+    public AudioClip openSound;
+    [Range(0f, 1f)] public float openSoundVolume = 1f;
+    public float soundMaxDistance = 20f;
+
+    [Header("Settings")]
+    public bool openOnStart = false;
 
     private Vector3 closedPos;
     private Vector3 openPos;
     private bool isOpen = false;
     private float closeTimer = 0f;
     private bool playerNear = false;
+    private bool teacherNear = false;
     private AudioSource audioSource;
+    private bool hasTriedOpen = false;
 
     void Start()
     {
         closedPos = transform.position;
         openPos = closedPos + openOffset;
+
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.spatialBlend = 1f;
+        audioSource.rolloffMode = AudioRolloffMode.Linear;
+        audioSource.maxDistance = soundMaxDistance;
+        audioSource.volume = openSoundVolume;
+        audioSource.playOnAwake = false;
+
+        // ОДИН РАЗ ПРИ СТАРТЕ
+        if (openOnStart && !hasTriedOpen)
+        {
+            hasTriedOpen = true;
+            TryOpen();
+            Debug.Log($"Door {gameObject.name}: TryOpen called on start");
+        }
     }
 
     void Update()
@@ -41,61 +60,86 @@ public class Door : MonoBehaviour
         if (isOpen)
         {
             closeTimer -= Time.deltaTime;
-            if (closeTimer <= 0f) isOpen = false;
+            if (closeTimer <= 0f)
+            {
+                CloseDoor();
+            }
         }
 
-        CheckPlayerInTrigger();
+        CheckEntitiesInTrigger();
 
         if (playerNear && Input.GetKeyDown(KeyCode.E))
         {
             TryOpen();
         }
+
+        if (teacherNear && !isOpen)
+        {
+            TryOpen();
+        }
     }
 
-    void CheckPlayerInTrigger()
+    void CheckEntitiesInTrigger()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, triggerRadius);
+        Collider[] hits = Physics.OverlapSphere(transform.position, 1.5f);
         playerNear = false;
+        teacherNear = false;
+
         foreach (Collider hit in hits)
         {
             if (hit.CompareTag("Player"))
             {
                 playerNear = true;
-                break;
+            }
+            if (hit.CompareTag("Teacher"))
+            {
+                teacherNear = true;
             }
         }
     }
 
-    void TryOpen()
+    public void TryOpen()
     {
         if (isOpen) return;
         if (!CheckRequirements()) return;
 
+        OpenDoor();
+    }
+
+    void OpenDoor()
+    {
         isOpen = true;
         closeTimer = openDuration;
 
-        // ЗВУК ОТКРЫТИЯ
-        if (openSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(openSound);
-        }
+        if (openSound != null)
+            audioSource.PlayOneShot(openSound, openSoundVolume);
+    }
+
+    void CloseDoor()
+    {
+        isOpen = false;
     }
 
     bool CheckRequirements()
     {
         foreach (var req in requirements)
         {
-            // TODO: подключить счётчики
+            if (GameManager.Instance != null)
+            {
+                Counter counter = GameManager.Instance.GetCounter(req.notebookID);
+                if (counter == null || counter.currentCount < req.requiredCount)
+                    return false;
+            }
         }
         return true;
     }
 
     void OnDrawGizmos()
     {
-        Gizmos.color = gizmoColor;
-        Gizmos.DrawSphere(transform.position, triggerRadius);
+        Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
+        Gizmos.DrawSphere(transform.position, 1.5f);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, triggerRadius);
+        Gizmos.DrawWireSphere(transform.position, 1.5f);
     }
 }
 

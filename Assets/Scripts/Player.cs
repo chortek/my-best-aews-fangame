@@ -5,13 +5,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Движение")]
+    [Header("Movement")]
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
     public float gravity = -9.81f;
     public float damping = 10f;
 
-    [Header("Выносливость")]
+    [Header("Stamina")]
     public float maxStamina = 100f;
     public float staminaDrainRate = 20f;
     public float staminaRegenRate = 15f;
@@ -21,19 +21,19 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
 
     [Header("UI")]
-    public Slider staminaSlider;         // <-- СЛАЙДЕР
+    public Slider staminaSlider;
 
-    [Header("Камера")]
+    [Header("Camera")]
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 80f;
     private float xRotation = 0f;
 
-    [Header("Боббинг")]
+    [Header("Bob")]
     public float bobSpeed = 10f;
     public float bobAmount = 0.05f;
     private float bobTimer = 0f;
 
-    [Header("Звук шагов")]
+    [Header("Footsteps")]
     public AudioClip footstepClip;
     public float stepInterval = 0.5f;
     private float stepTimer = 0f;
@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
         currentStamina = maxStamina;
         Cursor.lockState = CursorLockMode.Locked;
 
-        // Настройка слайдера
         if (staminaSlider != null)
         {
             staminaSlider.minValue = 0f;
@@ -74,6 +73,15 @@ public class PlayerController : MonoBehaviour
 
     void HandleStamina()
     {
+        // Бесконечная выносливость во время isChase
+        if (GameManager.Instance != null && GameManager.Instance.isChase)
+        {
+            currentStamina = maxStamina;
+            if (staminaSlider != null) staminaSlider.value = currentStamina;
+            isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving;
+            return;
+        }
+
         isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving && currentStamina > 0;
 
         if (isRunning)
@@ -101,7 +109,10 @@ public class PlayerController : MonoBehaviour
         isMoving = moveInput.magnitude > 0.1f;
 
         Vector3 targetMove = transform.right * x + transform.forward * z;
-        float targetSpeed = (isRunning && currentStamina > 0) ? runSpeed : walkSpeed;
+
+        // Если isChase — бег без ограничений
+        bool canRun = isRunning || (GameManager.Instance != null && GameManager.Instance.isChase);
+        float targetSpeed = (canRun && Input.GetKey(KeyCode.LeftShift)) ? runSpeed : walkSpeed;
 
         if (isMoving)
         {
@@ -139,7 +150,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        bobTimer += Time.deltaTime * bobSpeed * (isRunning ? 1.5f : 1f);
+        bool isChase = GameManager.Instance != null && GameManager.Instance.isChase;
+        float speedMultiplier = (isRunning || isChase) ? 1.5f : 1f;
+
+        bobTimer += Time.deltaTime * bobSpeed * speedMultiplier;
         float bobY = Mathf.Sin(bobTimer) * bobAmount;
         float bobX = Mathf.Cos(bobTimer * 0.5f) * bobAmount * 0.5f;
 
@@ -155,7 +169,9 @@ public class PlayerController : MonoBehaviour
         }
 
         stepTimer += Time.deltaTime;
-        float interval = isRunning ? stepInterval * 0.4f : stepInterval;
+
+        bool isChase = GameManager.Instance != null && GameManager.Instance.isChase;
+        float interval = (isRunning || isChase) ? stepInterval * 0.4f : stepInterval;
 
         if (stepTimer >= interval)
         {

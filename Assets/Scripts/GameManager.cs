@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
@@ -12,33 +14,56 @@ public class GameManager : MonoBehaviour
     public System.Action OnSpoopyActivated;
     public System.Action OnChaseActivated;
 
-    [Header("Счётчики")]
+    [Header("Counters")]
     public List<Counter> counters = new List<Counter>();
 
     [Header("HUD")]
     public Text notebookCounterText;
 
-    [Header("Музыка (перетащи аудиоклипы)")]
-    public AudioClip calmMusic;        // спокойная
-    public AudioClip spoopyMusic;      // жуткая
-    public AudioClip chaseStartMusic;  // старт погони (набирает обороты)
-    public AudioClip chaseLoopMusic;   // зацикленная погоня
+    [Header("Music")]
+    public AudioClip calmMusic;
+    public AudioClip spoopyMusic;
+    public AudioClip chaseStartMusic;
+    public AudioClip chaseLoopMusic;
 
-    [Header("Фразы (перетащи аудиоклипы)")]
+    [Header("Phrases")]
     public AudioClip spoopyPhrase;
     public AudioClip chasePhrase;
 
-    // AudioSource для музыки (создаются автоматически)
+    [Header("Spoopy Settings")]
+    public float spoopyDelay = 15f;
+
+    [Header("Fog")]
+    public bool enableFogOnSpoopy = true;
+    public Color fogColor = new Color(0.1f, 0.1f, 0.1f, 1f);
+    public float fogDensity = 0.05f;
+    public FogMode fogMode = FogMode.Exponential;
+
+    [Header("Reverb")]
+    public AudioReverbFilter reverbFilter;
+    public bool enableReverbOnSpoopy = true;
+    [Range(0, 7)] public int reverbPreset = 1;
+
+    [Header("Test Buttons")]
+    public bool enableTestButtons = false;
+    public KeyCode[] testKeys = new KeyCode[]
+    {
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4,
+        KeyCode.Alpha5
+    };
+
     private AudioSource calmSource;
     private AudioSource spoopySource;
     private AudioSource chaseStartSource;
     private AudioSource chaseLoopSource;
-
-    // AudioSource для фраз (2D)
     private AudioSource phraseSource;
 
-    private bool isSpoopyPhraseDone = false;
+    private bool isSpoopyTriggered = false;
     private bool isChasePhraseDone = false;
+    private float spoopyTimer = 0f;
 
     void Awake()
     {
@@ -48,18 +73,48 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
-        // Создаём AudioSource для музыки
         calmSource = CreateAudioSource("CalmMusic");
         spoopySource = CreateAudioSource("SpoopyMusic");
         chaseStartSource = CreateAudioSource("ChaseStartMusic");
         chaseLoopSource = CreateAudioSource("ChaseLoopMusic");
 
-        // AudioSource для фраз
         phraseSource = gameObject.AddComponent<AudioSource>();
         phraseSource.spatialBlend = 0f;
         phraseSource.playOnAwake = false;
+
+        if (reverbFilter == null)
+            reverbFilter = gameObject.AddComponent<AudioReverbFilter>();
+
+        reverbFilter.enabled = false;
+        reverbFilter.reverbPreset = (AudioReverbPreset)reverbPreset;
+    }
+
+    void Start()
+    {
+        ResetState();
+        UpdateNotebookUI();
+        PlayCalmMusic();
+    }
+
+    public void ResetState()
+    {
+        foreach (var counter in counters)
+        {
+            counter.currentCount = 0;
+            counter.isComplete = false;
+        }
+
+        isSpoopy = false;
+        isChase = false;
+        isSpoopyTriggered = false;
+        isChasePhraseDone = false;
+        spoopyTimer = 0f;
+
+        RenderSettings.fog = false;
+
+        if (reverbFilter != null)
+            reverbFilter.enabled = false;
     }
 
     AudioSource CreateAudioSource(string name)
@@ -71,20 +126,6 @@ public class GameManager : MonoBehaviour
         return source;
     }
 
-    void Start()
-    {
-        foreach (var counter in counters)
-        {
-            counter.currentCount = 0;
-            counter.isComplete = false;
-        }
-        UpdateNotebookUI();
-
-        // Включаем спокойную музыку
-        PlayCalmMusic();
-    }
-
-    // --- МУЗЫКА ---
     void PlayCalmMusic()
     {
         if (calmMusic != null)
@@ -95,11 +136,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void StopCalmMusicInstant()
+    {
+        calmSource.Stop();
+        calmSource.clip = null;
+    }
+
     void PlaySpoopyMusic()
     {
         if (spoopyMusic != null)
         {
-            calmSource.Stop();
             spoopySource.clip = spoopyMusic;
             spoopySource.loop = true;
             spoopySource.Play();
@@ -127,7 +173,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- СЧЁТЧИКИ ---
     public void AddToCounter(string itemID, int amount = 1)
     {
         Counter counter = GetCounter(itemID);
@@ -141,15 +186,33 @@ public class GameManager : MonoBehaviour
 
         UpdateNotebookUI();
 
-        if (!isSpoopy && !isSpoopyPhraseDone && counter.currentCount >= 1)
+        if (!isSpoopy && !isSpoopyTriggered && counter.currentCount >= 1)
         {
-            ActivateSpoopySequence();
+            isSpoopyTriggered = true;
+            spoopyTimer = 0f;
+            StopCalmMusicInstant();
+
+            if (enableReverbOnSpoopy && reverbFilter != null)
+            {
+                reverbFilter.enabled = true;
+                reverbFilter.reverbPreset = (AudioReverbPreset)reverbPreset;
+            }
         }
 
-        if (!isChase && !isChasePhraseDone && CheckAllRequiredCollected())
+        if (!isChase && !isChasePhraseDone && CheckAllRequiredCollectedExact())
         {
             ActivateChaseSequence();
         }
+    }
+
+    bool CheckAllRequiredCollectedExact()
+    {
+        foreach (var counter in counters)
+        {
+            if (counter.isRequired && counter.currentCount != counter.requiredCount)
+                return false;
+        }
+        return true;
     }
 
     public Counter GetCounter(string itemID)
@@ -157,17 +220,29 @@ public class GameManager : MonoBehaviour
         return counters.Find(c => c.itemID == itemID);
     }
 
-    bool CheckAllRequiredCollected()
+    void Update()
     {
-        foreach (var counter in counters)
+        if (isSpoopyTriggered && !isSpoopy)
         {
-            if (counter.isRequired && !counter.isComplete)
-                return false;
+            spoopyTimer += Time.deltaTime;
+            if (spoopyTimer >= spoopyDelay)
+            {
+                ActivateSpoopySequence();
+            }
         }
-        return true;
+
+        if (enableTestButtons)
+        {
+            for (int i = 0; i < counters.Count && i < testKeys.Length; i++)
+            {
+                if (Input.GetKeyDown(testKeys[i]))
+                {
+                    AddToCounter(counters[i].itemID, 1);
+                }
+            }
+        }
     }
 
-    // --- UI ---
     void UpdateNotebookUI()
     {
         if (notebookCounterText == null) return;
@@ -175,40 +250,36 @@ public class GameManager : MonoBehaviour
         string text = "";
         foreach (var counter in counters)
         {
-            if (counter.requiredCount > 0)
-            {
-                text += $"{counter.itemID}: {counter.currentCount}/{counter.requiredCount}  ";
-            }
+            // Показываем ВСЕ счётчики, даже если requiredCount = 0
+            text += $"{counter.itemID}: {counter.currentCount}/{counter.requiredCount}  ";
         }
-        notebookCounterText.text = text;
+        notebookCounterText.text = text.Trim();
     }
 
-    // --- ПОСЛЕДОВАТЕЛЬНОСТЬ isSpoopy ---
     void ActivateSpoopySequence()
     {
-        if (isSpoopy || isSpoopyPhraseDone) return;
-        isSpoopyPhraseDone = true;
+        if (isSpoopy) return;
+        isSpoopyTriggered = false;
 
         if (spoopyPhrase != null)
         {
             phraseSource.PlayOneShot(spoopyPhrase);
-            float delay = spoopyPhrase.length;
-            Invoke(nameof(FinishSpoopy), delay);
         }
-        else
-        {
-            FinishSpoopy();
-        }
-    }
 
-    void FinishSpoopy()
-    {
         PlaySpoopyMusic();
+
+        if (enableFogOnSpoopy)
+        {
+            RenderSettings.fog = true;
+            RenderSettings.fogColor = fogColor;
+            RenderSettings.fogMode = fogMode;
+            RenderSettings.fogDensity = fogDensity;
+        }
+
         isSpoopy = true;
         OnSpoopyActivated?.Invoke();
     }
 
-    // --- ПОСЛЕДОВАТЕЛЬНОСТЬ isChase ---
     void ActivateChaseSequence()
     {
         if (isChase || isChasePhraseDone) return;
@@ -228,24 +299,38 @@ public class GameManager : MonoBehaviour
 
     void StartChaseMusic()
     {
-        PlayChaseStartMusic();
-
-        float startLength = chaseStartMusic != null ? chaseStartMusic.length : 2f;
-        Invoke(nameof(FinishChase), startLength);
+        if (chaseStartMusic != null)
+        {
+            PlayChaseStartMusic();
+            float startLength = chaseStartMusic.length;
+            Invoke(nameof(FinishChase), startLength);
+        }
+        else
+        {
+            FinishChase();
+        }
     }
 
     void FinishChase()
     {
-        PlayChaseLoopMusic();
+        if (chaseLoopMusic != null)
+        {
+            PlayChaseLoopMusic();
+        }
+
         isChase = true;
         OnChaseActivated?.Invoke();
     }
 
-    // --- ФРАЗЫ (ручной запуск) ---
     public void PlayPhrase(AudioClip clip)
     {
         if (clip == null) return;
         phraseSource.PlayOneShot(clip);
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

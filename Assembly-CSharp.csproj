@@ -61,10 +61,16 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.3f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\MemoryGaming.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\NoteboosSpawn.cs" />
+    <Compile Include="Assets\Scripts\Billboard.cs" />
+    <Compile Include="Assets\Scripts\TeacherSetup.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\NotebooSetup.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\KatScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
