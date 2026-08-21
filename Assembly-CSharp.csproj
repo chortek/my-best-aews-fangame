@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\NotebooSetup.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\ViktoryButton.cs" />
     <Compile Include="Assets\Scripts\KatScript.cs" />
   </ItemGroup>
   <ItemGroup>

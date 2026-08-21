@@ -42,7 +42,10 @@ public class GameManager : MonoBehaviour
     [Header("Reverb")]
     public AudioReverbFilter reverbFilter;
     public bool enableReverbOnSpoopy = true;
-    [Range(0, 7)] public int reverbPreset = 1;
+
+    [Header("Level Navigation")]
+    public string levelUp;
+    public string levelDown;
 
     [Header("Test Buttons")]
     public bool enableTestButtons = false;
@@ -54,6 +57,14 @@ public class GameManager : MonoBehaviour
         KeyCode.Alpha4,
         KeyCode.Alpha5
     };
+
+    [Header("Special Notebook (18th)")]
+    public bool enableSpecialNotebook = false;
+    public string specialNotebookID = "MEMORY";
+    public int specialNotebookCount = 18;
+    public GameObject specialNotebook;
+    public Color specialCounterColor = Color.red;
+    private bool specialNotebookRevealed = false;
 
     private AudioSource calmSource;
     private AudioSource spoopySource;
@@ -87,7 +98,7 @@ public class GameManager : MonoBehaviour
             reverbFilter = gameObject.AddComponent<AudioReverbFilter>();
 
         reverbFilter.enabled = false;
-        reverbFilter.reverbPreset = (AudioReverbPreset)reverbPreset;
+        reverbFilter.reverbPreset = (AudioReverbPreset)1;
     }
 
     void Start()
@@ -103,6 +114,11 @@ public class GameManager : MonoBehaviour
         {
             counter.currentCount = 0;
             counter.isComplete = false;
+
+            if (enableSpecialNotebook && counter.itemID == specialNotebookID)
+            {
+                counter.requiredCount = specialNotebookCount - 1;
+            }
         }
 
         isSpoopy = false;
@@ -110,6 +126,10 @@ public class GameManager : MonoBehaviour
         isSpoopyTriggered = false;
         isChasePhraseDone = false;
         spoopyTimer = 0f;
+
+        specialNotebookRevealed = false;
+        if (specialNotebook != null)
+            specialNotebook.SetActive(false);
 
         RenderSettings.fog = false;
 
@@ -195,13 +215,37 @@ public class GameManager : MonoBehaviour
             if (enableReverbOnSpoopy && reverbFilter != null)
             {
                 reverbFilter.enabled = true;
-                reverbFilter.reverbPreset = (AudioReverbPreset)reverbPreset;
+                Debug.Log("Reverb enabled on first notebook");
             }
         }
 
+        // ========== isChase ПРИ 17 ==========
         if (!isChase && !isChasePhraseDone && CheckAllRequiredCollectedExact())
         {
             ActivateChaseSequence();
+        }
+    }
+
+    void RevealSpecialNotebook()
+    {
+        if (specialNotebook != null)
+        {
+            specialNotebook.SetActive(true);
+            specialNotebookRevealed = true;
+
+            Counter counter = GetCounter(specialNotebookID);
+            if (counter != null)
+            {
+                counter.requiredCount = specialNotebookCount;
+                Debug.Log($"Required count for {specialNotebookID} increased to {specialNotebookCount}");
+            }
+
+            UpdateNotebookUI();
+            Debug.Log($"18th notebook revealed at {specialNotebook.transform.position}!");
+        }
+        else
+        {
+            Debug.LogError("Special notebook is NULL!");
         }
     }
 
@@ -222,6 +266,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !string.IsNullOrEmpty(levelUp))
+        {
+            SceneManager.LoadScene(levelUp);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !string.IsNullOrEmpty(levelDown))
+        {
+            SceneManager.LoadScene(levelDown);
+        }
+
         if (isSpoopyTriggered && !isSpoopy)
         {
             spoopyTimer += Time.deltaTime;
@@ -250,8 +304,20 @@ public class GameManager : MonoBehaviour
         string text = "";
         foreach (var counter in counters)
         {
-            // Показываем ВСЕ счётчики, даже если requiredCount = 0
-            text += $"{counter.itemID}: {counter.currentCount}/{counter.requiredCount}  ";
+            // Красный когда requiredCount = 18 (появилась цель), но currentCount ещё 17
+            bool isSpecial = enableSpecialNotebook &&
+                             counter.itemID == specialNotebookID &&
+                             counter.requiredCount == specialNotebookCount &&
+                             counter.currentCount == specialNotebookCount - 1;
+
+            if (isSpecial)
+            {
+                text += $"<color=#{ColorUtility.ToHtmlStringRGB(specialCounterColor)}>{counter.itemID}: {counter.currentCount}/{counter.requiredCount}</color>  ";
+            }
+            else
+            {
+                text += $"{counter.itemID}: {counter.currentCount}/{counter.requiredCount}  ";
+            }
         }
         notebookCounterText.text = text.Trim();
     }
@@ -285,6 +351,7 @@ public class GameManager : MonoBehaviour
         if (isChase || isChasePhraseDone) return;
         isChasePhraseDone = true;
 
+        // 1. Фраза
         if (chasePhrase != null)
         {
             phraseSource.PlayOneShot(chasePhrase);
@@ -299,6 +366,7 @@ public class GameManager : MonoBehaviour
 
     void StartChaseMusic()
     {
+        // 2. ChaseStart
         if (chaseStartMusic != null)
         {
             PlayChaseStartMusic();
@@ -313,13 +381,20 @@ public class GameManager : MonoBehaviour
 
     void FinishChase()
     {
-        if (chaseLoopMusic != null)
-        {
-            PlayChaseLoopMusic();
-        }
+        // 3. ChaseLoop
+        PlayChaseLoopMusic();
 
         isChase = true;
         OnChaseActivated?.Invoke();
+
+        // ========== 18-Я ТЕТРАДЬ ПОСЛЕ ПОЛНОЙ АКТИВАЦИИ isChase ==========
+        if (enableSpecialNotebook && !specialNotebookRevealed)
+        {
+            RevealSpecialNotebook();
+            UpdateNotebookUI();
+        }
+
+        Debug.Log("isChase activated with: phrase -> chaseStart -> chaseLoop, then 18th notebook revealed");
     }
 
     public void PlayPhrase(AudioClip clip)

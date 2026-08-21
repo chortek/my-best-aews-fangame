@@ -23,6 +23,7 @@ public class KatScript : MonoBehaviour
     private AudioSource phraseSource;
 
     private bool isMoving = false;
+    private bool isChasing = false;           // <-- ДОБАВЛЕНО
     private float currentStepTimer = 0f;
     private float currentWaitTimer = 0f;
     private float currentWaitBetweenSteps;
@@ -30,6 +31,7 @@ public class KatScript : MonoBehaviour
     private float initialWaitBetweenSteps;
     private int collectedNotebooks = 0;
     private bool isQuietMode = false;
+    private bool isQuietModeSet = false;
     private bool isSpeedReset = false;
     private bool footstepPlayed = false;
     private float stuckTimer = 0f;
@@ -41,6 +43,7 @@ public class KatScript : MonoBehaviour
         {
             agent.SetDestination(player.position);
             StartMoveStep();
+            isChasing = true;                 // <-- ДОБАВЛЕНО
         }
     }
 
@@ -51,6 +54,7 @@ public class KatScript : MonoBehaviour
             agent.speed = 0f;
         }
         isMoving = false;
+        isChasing = false;                    // <-- ДОБАВЛЕНО
         footstepPlayed = false;
     }
 
@@ -94,24 +98,27 @@ public class KatScript : MonoBehaviour
         currentReductionMultiplier = reductionPerNotebook;
         lastPosition = transform.position;
         enabled = false;
+        isChasing = false;                    // <-- ДОБАВЛЕНО
     }
 
     void Update()
     {
         if (player == null) return;
 
-        // --- ПРИНУДИТЕЛЬНАЯ ПРОВЕРКА КАСАНИЯ ---
-        float dist = Vector3.Distance(transform.position, player.position);
-        if (dist < 0.5f)
+        // Проверка касания (только если преследует)
+        if (isChasing)
         {
-            Debug.Log($"Teacher {gameObject.name} caught player! (distance check)");
-            if (GameManager.Instance != null)
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (dist < 0.5f)
             {
-                GameManager.Instance.GameOver();
+                Debug.Log($"Teacher {gameObject.name} caught player! (distance)");
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.GameOver();
+                }
+                return;
             }
-            return;
         }
-
 
         if (!agent.isOnNavMesh || !agent.hasPath)
         {
@@ -216,15 +223,17 @@ public class KatScript : MonoBehaviour
     {
         collectedNotebooks = count;
 
-        // ЕСЛИ ТИХИЙ РЕЖИМ — НЕ МЕНЯЕМ ПАУЗУ
-        if (isQuietMode)
+        if (!isQuietModeSet)
         {
-            Debug.Log($"Quiet mode active, wait locked at {currentWaitBetweenSteps}");
-            return;
+            float reduction = collectedNotebooks * currentReductionMultiplier;
+            currentWaitBetweenSteps = Mathf.Max(initialWaitBetweenSteps - reduction, 0.05f);
         }
-
-        float reduction = collectedNotebooks * currentReductionMultiplier;
-        currentWaitBetweenSteps = Mathf.Max(initialWaitBetweenSteps - reduction, 0.05f);
+        else
+        {
+            float reduction = (collectedNotebooks - 13) * currentReductionMultiplier;
+            currentWaitBetweenSteps = Mathf.Max(3f - reduction, 0.05f);
+            Debug.Log($"Quiet mode accelerating: notebooks={collectedNotebooks}, wait={currentWaitBetweenSteps}");
+        }
 
         Debug.Log($"Notebooks: {collectedNotebooks}, Wait: {currentWaitBetweenSteps}");
 
@@ -244,18 +253,34 @@ public class KatScript : MonoBehaviour
             phraseSource.PlayOneShot(quietPhrase);
         }
 
-        // ПРИНУДИТЕЛЬНО 3 СЕКУНДЫ
-        currentWaitBetweenSteps = 3f;
+        if (!isQuietModeSet)
+        {
+            currentWaitBetweenSteps = 3f;
+            isQuietModeSet = true;
+            Debug.Log($"Quiet mode: wait FORCED to {currentWaitBetweenSteps} (once)");
+        }
 
         isMoving = false;
         agent.speed = 0f;
         currentStepTimer = 0f;
         currentWaitTimer = 0f;
         footstepPlayed = false;
-
-        Debug.Log($"Quiet mode: wait FORCED to {currentWaitBetweenSteps}");
     }
 
     public void OnSpoopy() { }
     public void OnChase() { }
+
+    // --- ПЕРЕЗАПУСК ПРИ КАСАНИИ (ТОЛЬКО В РЕЖИМЕ ПОГОНИ) ---
+    void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        if (!isChasing) return;
+
+        Debug.Log($"Teacher {gameObject.name} caught the player!");
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.GameOver();
+        }
+    }
 }

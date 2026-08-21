@@ -1,8 +1,0 @@
-Changelog
-> Added Mr. Kat (first teacher)
-- behaviour
-> Added Memory notebooks
-- tasks 
-- random spawn (17/17)
-> Memory map expand
-> Geography and Typing (WiP)

@@ -1,0 +1,11 @@
+Changelog
+> Finished Memory map
+- New theme
+> Memory ending
+- 17th notebook
+> Fixes in Mr. Kat's AI
+> Geography and Typing improved
+- Expanded geography
+- added wip geography notebook (don't collect it)
+- new textures for both levels
+> moving between levels with up/down arrow
