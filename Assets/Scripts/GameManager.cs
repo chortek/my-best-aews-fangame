@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
     public string levelUp;
     public string levelDown;
 
+    [Header("Win Screen")]
+    public GameObject winPanel;
+    public AudioClip winSound;
+
     [Header("Test Buttons")]
     public bool enableTestButtons = false;
     public KeyCode[] testKeys = new KeyCode[]
@@ -71,10 +75,12 @@ public class GameManager : MonoBehaviour
     private AudioSource chaseStartSource;
     private AudioSource chaseLoopSource;
     private AudioSource phraseSource;
+    private AudioSource winSoundSource;
 
     private bool isSpoopyTriggered = false;
     private bool isChasePhraseDone = false;
     private float spoopyTimer = 0f;
+    private bool isGameWon = false;
 
     void Awake()
     {
@@ -94,11 +100,18 @@ public class GameManager : MonoBehaviour
         phraseSource.spatialBlend = 0f;
         phraseSource.playOnAwake = false;
 
+        winSoundSource = gameObject.AddComponent<AudioSource>();
+        winSoundSource.spatialBlend = 0f;
+        winSoundSource.playOnAwake = false;
+
         if (reverbFilter == null)
             reverbFilter = gameObject.AddComponent<AudioReverbFilter>();
 
         reverbFilter.enabled = false;
         reverbFilter.reverbPreset = (AudioReverbPreset)1;
+
+        if (winPanel != null)
+            winPanel.SetActive(false);
     }
 
     void Start()
@@ -126,6 +139,7 @@ public class GameManager : MonoBehaviour
         isSpoopyTriggered = false;
         isChasePhraseDone = false;
         spoopyTimer = 0f;
+        isGameWon = false;
 
         specialNotebookRevealed = false;
         if (specialNotebook != null)
@@ -135,6 +149,11 @@ public class GameManager : MonoBehaviour
 
         if (reverbFilter != null)
             reverbFilter.enabled = false;
+
+        if (winPanel != null)
+            winPanel.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     AudioSource CreateAudioSource(string name)
@@ -219,7 +238,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // ========== isChase ПРИ 17 ==========
+        // isChase при 17
         if (!isChase && !isChasePhraseDone && CheckAllRequiredCollectedExact())
         {
             ActivateChaseSequence();
@@ -304,7 +323,6 @@ public class GameManager : MonoBehaviour
         string text = "";
         foreach (var counter in counters)
         {
-            // Красный когда requiredCount = 18 (появилась цель), но currentCount ещё 17
             bool isSpecial = enableSpecialNotebook &&
                              counter.itemID == specialNotebookID &&
                              counter.requiredCount == specialNotebookCount &&
@@ -340,6 +358,9 @@ public class GameManager : MonoBehaviour
             RenderSettings.fogColor = fogColor;
             RenderSettings.fogMode = fogMode;
             RenderSettings.fogDensity = fogDensity;
+
+            QualitySettings.SetQualityLevel(0, true);
+            Debug.Log($"Fog enabled: {RenderSettings.fog}, Density: {RenderSettings.fogDensity}");
         }
 
         isSpoopy = true;
@@ -351,7 +372,6 @@ public class GameManager : MonoBehaviour
         if (isChase || isChasePhraseDone) return;
         isChasePhraseDone = true;
 
-        // 1. Фраза
         if (chasePhrase != null)
         {
             phraseSource.PlayOneShot(chasePhrase);
@@ -366,7 +386,6 @@ public class GameManager : MonoBehaviour
 
     void StartChaseMusic()
     {
-        // 2. ChaseStart
         if (chaseStartMusic != null)
         {
             PlayChaseStartMusic();
@@ -381,13 +400,11 @@ public class GameManager : MonoBehaviour
 
     void FinishChase()
     {
-        // 3. ChaseLoop
         PlayChaseLoopMusic();
 
         isChase = true;
         OnChaseActivated?.Invoke();
 
-        // ========== 18-Я ТЕТРАДЬ ПОСЛЕ ПОЛНОЙ АКТИВАЦИИ isChase ==========
         if (enableSpecialNotebook && !specialNotebookRevealed)
         {
             RevealSpecialNotebook();
@@ -407,9 +424,84 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    // ===================== ПОБЕДА =====================
+
+    public void WinGame()
+    {
+        if (isGameWon) return;
+        isGameWon = true;
+
+        // РАЗБЛОКИРОВКА МЫШИ
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (winSound != null && winSoundSource != null)
+        {
+            winSoundSource.PlayOneShot(winSound);
+        }
+
+        DisableAllCharacters();
+
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+        }
+
+        Time.timeScale = 0f;
+
+        Debug.Log("Победа!");
+    }
+
+    void DisableAllCharacters()
+    {
+        TeacherSetup[] teachers = FindObjectsByType<TeacherSetup>(FindObjectsSortMode.None);
+        foreach (var teacher in teachers)
+        {
+            if (teacher != null)
+                teacher.gameObject.SetActive(false);
+        }
+    }
+
+    // ===================== КНОПКИ ПОБЕДНОГО ЭКРАНА =====================
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLevel()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        if (!string.IsNullOrEmpty(levelUp))
+        {
+            SceneManager.LoadScene(levelUp);
+        }
+        else
+        {
+            Debug.Log("Нет следующего уровня");
+        }
+    }
+
+    public void QuitGame()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }
 
-[System.Serializable]
+    [System.Serializable]
 public class Counter
 {
     public string itemID;

@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class WinButton : MonoBehaviour
 {
     [Header("Settings")]
-    public string nextLevel = "";
     public AudioClip winSound;
 
     [Header("Interaction")]
@@ -48,18 +47,19 @@ public class WinButton : MonoBehaviour
 
     void Win()
     {
-        Debug.Log("Player won the level!");
+        Debug.Log("Player won the level! (via WinButton)");
 
         if (winSound != null)
             audioSource.PlayOneShot(winSound);
 
-        if (!string.IsNullOrEmpty(nextLevel))
+        // бшгшбюел онаедс вепег GAME MANAGER
+        if (GameManager.Instance != null)
         {
-            SceneManager.LoadScene(nextLevel);
+            GameManager.Instance.WinGame();
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.LogError("GameManager.Instance is null! Cannot call WinGame.");
         }
     }
 

@@ -6,6 +6,9 @@ public class NotebookSetup : MonoBehaviour
     public string itemID = "œ‡ÏˇÚ¸";
     public GameObject miniGamePanel;
 
+    [Header("Game Type")]
+    public GameType gameType = GameType.Memory;
+
     [Header("Interaction")]
     public float interactionRadius = 1.5f;
 
@@ -17,14 +20,16 @@ public class NotebookSetup : MonoBehaviour
     private bool isGameActive = false;
     private AudioSource audioSource;
 
+    public enum GameType
+    {
+        Memory,
+        Geography
+    }
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
-
-        // Õ≈ Œ“ Àﬁ◊¿≈Ã œ¿Õ≈À‹ ¬ START()
-        // if (miniGamePanel != null)
-        //     miniGamePanel.SetActive(false);
 
         if (miniGamePanel != null)
         {
@@ -40,7 +45,6 @@ public class NotebookSetup : MonoBehaviour
     {
         if (isCollected) return;
 
-        // “≈—“: Ì‡ÊÏË T ‰Îˇ Û˜ÌÓ„Ó Á‡ÔÛÒÍ‡
         if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("Manual start by T");
@@ -94,19 +98,34 @@ public class NotebookSetup : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Panel: {miniGamePanel.name}, active before: {miniGamePanel.activeSelf}");
         miniGamePanel.SetActive(true);
-        Debug.Log($"Panel active after: {miniGamePanel.activeSelf}");
 
-        MemoryGaming game = miniGamePanel.GetComponent<MemoryGaming>();
-        if (game != null)
+        // ========== ¬€¡Œ– “»œ¿ »√–€ ==========
+        if (gameType == GameType.Memory)
         {
-            game.StartGame(itemID, this);
+            MemoryGaming memoryGame = miniGamePanel.GetComponent<MemoryGaming>();
+            if (memoryGame != null)
+            {
+                memoryGame.StartGame(itemID, this);
+            }
+            else
+            {
+                Debug.LogError("MemoryGaming component not found on miniGamePanel!");
+            }
         }
-        else
+        else if (gameType == GameType.Geography)
         {
-            Debug.LogError("MemoryGaming component not found on miniGamePanel!");
+            GeoGaming geoGame = miniGamePanel.GetComponent<GeoGaming>();
+            if (geoGame != null)
+            {
+                geoGame.StartGame(itemID, this);
+            }
+            else
+            {
+                Debug.LogError("GeoGaming component not found on miniGamePanel!");
+            }
         }
+        // ====================================
     }
 
     public void CompleteGame()
