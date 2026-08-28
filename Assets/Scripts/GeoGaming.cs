@@ -169,6 +169,8 @@ public class GeoGaming : MonoBehaviour
     void CompleteGame()
     {
         isGameRunning = false;
+        StopAllCoroutines();
+        this.enabled = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -188,8 +190,6 @@ public class GeoGaming : MonoBehaviour
         {
             notebook.CompleteGame();
         }
-
-        Debug.Log($"Geography completed! Correct answers: {correctAnswers}/{rounds}");
     }
 
     void Shuffle<T>(List<T> list)

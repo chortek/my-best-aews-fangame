@@ -197,6 +197,8 @@ public class MemoryGaming : MonoBehaviour
     void CompleteGame()
     {
         isGameRunning = false;
+        StopAllCoroutines();
+        this.enabled = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

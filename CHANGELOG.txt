@@ -1,9 +1,8 @@
 Changelog
-> New elevator style
-> Memory win screen
-> Typing expand
-- 17 Memory
-- Mr. Kat's behavior
-- Theme
-> Geography tasks
-- questions
+> New notebooks sprite
+> New prototype level! (guess which subject is it)
+> Little changes in maps
+- One classroom for memory
+- Greeting zone + textures in geography
+> Typing tasks
+> Readme file

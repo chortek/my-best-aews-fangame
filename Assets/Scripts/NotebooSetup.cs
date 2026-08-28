@@ -23,7 +23,8 @@ public class NotebookSetup : MonoBehaviour
     public enum GameType
     {
         Memory,
-        Geography
+        Geography,
+        Typing
     }
 
     void Start()
@@ -43,13 +44,7 @@ public class NotebookSetup : MonoBehaviour
 
     void Update()
     {
-        if (isCollected) return;
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Manual start by T");
-            StartGame();
-        }
+        if (isCollected || isGameActive) return;
 
         CheckPlayerInTrigger();
 
@@ -85,7 +80,10 @@ public class NotebookSetup : MonoBehaviour
 
     void StartGame()
     {
-        Debug.Log($"StartGame on {gameObject.name}");
+        Debug.Log($"StartGame called on {gameObject.name} at {Time.time} (isGameActive: {isGameActive})");
+
+        if (isCollected) return;
+        if (isGameActive) return;
 
         isGameActive = true;
 
@@ -125,13 +123,30 @@ public class NotebookSetup : MonoBehaviour
                 Debug.LogError("GeoGaming component not found on miniGamePanel!");
             }
         }
+        else if (gameType == GameType.Typing)
+        {
+            PrintGaming printGame = miniGamePanel.GetComponent<PrintGaming>();
+            if (printGame != null)
+            {
+                printGame.StartGame(itemID, this);
+            }
+            else
+            {
+                Debug.LogError("PrintGaming component not found on miniGamePanel!");
+            }
+        }
         // ====================================
     }
 
     public void CompleteGame()
     {
+        if (isCollected) return;
         isCollected = true;
         isGameActive = false;
+
+        // Œ“ Àﬁ◊¿≈Ã ¬—®
+        this.enabled = false;                 // <-- Œ“ Àﬁ◊¿≈Ã — –»œ“
+        gameObject.SetActive(false);          // <-- ¬€ Àﬁ◊¿≈Ã Œ¡⁄≈ “
 
         if (miniGamePanel != null)
             miniGamePanel.SetActive(false);
@@ -141,7 +156,6 @@ public class NotebookSetup : MonoBehaviour
             GameManager.Instance.AddToCounter(itemID, 1);
         }
 
-        gameObject.SetActive(false);
         Debug.Log($"Notebook {gameObject.name}: game completed");
     }
 
