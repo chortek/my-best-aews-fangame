@@ -1,8 +1,12 @@
 Changelog
-> New notebooks sprite
-> New prototype level! (guess which subject is it)
-> Little changes in maps
-- One classroom for memory
-- Greeting zone + textures in geography
-> Typing tasks
-> Readme file
+> Art
+- counter
+- map expand
+> Typing 
+- small changes
+> Geometry
+- mass expand
+- 46/46
+- changed chase theme
+> Memory
+- changed music

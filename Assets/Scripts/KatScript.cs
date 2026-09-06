@@ -230,14 +230,14 @@ public class KatScript : MonoBehaviour
         }
         else
         {
-            float reduction = (collectedNotebooks - 13) * currentReductionMultiplier;
+            float reduction = (collectedNotebooks - 11) * currentReductionMultiplier;
             currentWaitBetweenSteps = Mathf.Max(3f - reduction, 0.05f);
             Debug.Log($"Quiet mode accelerating: notebooks={collectedNotebooks}, wait={currentWaitBetweenSteps}");
         }
 
         Debug.Log($"Notebooks: {collectedNotebooks}, Wait: {currentWaitBetweenSteps}");
 
-        if (collectedNotebooks >= 13 && !isSpeedReset)
+        if (collectedNotebooks >= 11 && !isSpeedReset)
         {
             EnterQuietMode();
         }

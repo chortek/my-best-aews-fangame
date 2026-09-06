@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.5
@@ -7626,7 +7626,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -15845,7 +15845,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -21127,7 +21127,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
@@ -29124,7 +29124,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
@@ -29968,10 +29968,10 @@ MonoBehaviour:
     isRequired: 1
     isComplete: 0
   notebookCounterText: {fileID: 610230734}
-  calmMusic: {fileID: 8300000, guid: cf43128396c5f3f498c7114957c105fb, type: 3}
+  calmMusic: {fileID: 8300000, guid: 7f1f19a4c51ad6743947e9ef2510cc7c, type: 3}
   spoopyMusic: {fileID: 8300000, guid: 11c106db8c533864cad62004886455f4, type: 3}
-  chaseStartMusic: {fileID: 8300000, guid: 690ebd1d0cefb70429c940845f695375, type: 3}
-  chaseLoopMusic: {fileID: 8300000, guid: d43c53d9f38bdd74593d8e41f08a94dd, type: 3}
+  chaseStartMusic: {fileID: 8300000, guid: 2b5388aff360a964fb17e7f6bdcc4513, type: 3}
+  chaseLoopMusic: {fileID: 8300000, guid: 926480c8573ea094195fd08e9c1f54eb, type: 3}
   spoopyPhrase: {fileID: 8300000, guid: 37e03bf11ee162946a60f43a21741789, type: 3}
   chasePhrase: {fileID: 8300000, guid: ec8d19b91f5d7764cb19f72acc419b7f, type: 3}
   spoopyDelay: 5
@@ -37211,7 +37211,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -44489,7 +44489,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -46412,7 +46412,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b07389856a1cc134f9b368789583f3e8, type: 3}
+    m_Font: {fileID: 12800000, guid: 194720fbb6729d748bad03427e30d085, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
